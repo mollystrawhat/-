@@ -1,0 +1,23 @@
+body{
+  background:#fc0;
+}
+div{
+            width:400px;
+            height:100px;
+            background: #f66 repeat-x;
+            position: relative;
+            overflow:hidden;
+                    }
+        div::after{
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width:6px;
+            height:6px;
+            border-radius: 50%;
+            background:#fff;
+            background:linear-gradient(to bottom,#fff,#fff) repeat-x;
+            bottom:-3px;
+            left:16px;
+            box-shadow: 0 0 0 10px #fff,40px 0 0 10px #fff,80px 0 0 10px #fff,120px 0 0 10px #fff,160px 0 0 10px #fff,200px 0 0 10px #fff,240px 0 0 10px #fff,280px 0 0 10px #fff,320px 0 0 10px #fff,360px 0 0 10px #fff;
+                    }
