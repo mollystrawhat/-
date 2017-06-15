@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test test</title>
+</head>
+<body>
+<select id="mySelect" placeholder="选择一个时间">
+    <option value="1">1分钟</option>
+    <option value="5">5分钟</option>
+    <option value="10">10分钟</option>
+    <option value="20">20分钟</option>
+</select>
+
+<button id="startButton">start</button>
+<button id="pauseButton" disabled>pause</button>
+<button id="resumeButton" disabled>resume</button>
+
+<div id="outputDiv"></div>
+<script>
+    
+var timeLeft = 10
+let lastTimerId
+function showTime(){
+    outputDiv.textContent = timeLeft + '秒'
+    if(timeLeft === 0){
+        return
+    }
+    timeLeft -= 1;
+    lastTimerId = setTimeout(showTime,1000)
+    //递归
+}
+
+startButton.onclick = function(){
+    var valueNumber = parseInt(mySelect.value,10)
+    //mySelect.value是字符串
+    var seconds = valueNumber * 60
+
+    timeLeft = seconds
+    if(lastTimerId){
+        window.clearTimeout(lastTimerId)
+    }
+    //避免多次点击start计时加快
+    showTime()
+    pauseButton.disabled = false
+}
+
+pauseButton.onclick = function(){
+    window.clearTimeout(lastTimerId)
+    resumeButton.disabled = false
+    pauseButton.disabled = true
+
+}
+
+resumeButton.onclick = function(){
+    showTime()
+    pauseButton.disabled = false
+    resumeButton.disabled = true
+}
+
+
+
+</script> 
+</body>
+</html>
